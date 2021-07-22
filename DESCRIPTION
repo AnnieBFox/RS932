@@ -1,13 +1,13 @@
 Package: RS932Package
-Title: What the Package Does (One Line, Title Case)
+Title: RS 932 Package
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Annie",
+           family = "Fox",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "afox-galalis@mghihp.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Tutorials and datasets for RS 932 at the MGH Institute of Health Professions.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to
     pick a license
 Encoding: UTF-8
@@ -16,3 +16,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
     learnr
+Depends: 
+    R (>= 2.10)
