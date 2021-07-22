@@ -1,0 +1,142 @@
+/*-------- Background color & body font --------*/
+body {
+  background-color: white;
+  color: #616161;
+}
+
+/* bold */
+b, strong {
+   color: #800080;
+   }
+
+/*------- In line code aesthetic --------*/
+code {
+    color: white;
+    background-color: #00205B;
+    font-size: 14px;
+}
+
+
+/*------- Buttons -------*/
+
+.btn-primary, .btn-success, .btn-info {
+    color: #ffffff;
+    background-color: orange;
+    background-image: none;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn-default {
+    color: #ffffff;
+    background-color: orange;
+    background-image: none;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+/*------- Buttons when hovering -------*/
+.btn-default:hover, btn-success:hover, btn-info:hover, btn-primary:hover {
+  background-color: #136CB9;
+  color: white;
+}
+
+
+/*-------- Code chunk buttons hover aesthetic -------*/
+
+.tutorial-exercise-input .btn-xs:hover {
+    margin-right: 0;
+    margin-top: -1px;
+    font-size: 13px;
+    margin-left: 12px;
+    padding-right: 8px;
+    font-weight: normal;
+    background-color: #136CB9;
+    color: white;
+    border: 0;
+}
+
+
+
+/*------- Solution / Hint buttons -------*/
+.tutorial-exercise-input .btn-tutorial-solution {
+    background-color: #2C5577;
+    color: white;
+    font-family: 'Jaldi', sans-serif;
+    border: 0;
+    text-shadow: none;
+}
+
+/*------- Solution popover --------*/
+.popover-title {
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 14px;
+    background-color: #E8EAE5;
+    border-bottom: 1px solid #2C5577;
+    border-radius: 5px 5px 0 0;
+    color: #3F3F3F;
+    text-shadow: none;
+    font-family: 'Jaldi', sans-serif;
+}
+
+
+
+
+
+h2 {
+  color: teal;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  color: teal;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+h4 {
+  color: teal;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+h5 {
+    color: #A72B2A;
+    background-color: white;
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* Pedagogic boxes */
+
+.tip {
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid #136CB9;
+  background-color: #136CB9;
+  background-color: rgba(19, 108, 185, 0.1);
+  color: #2C5577;
+}
+
+.warning {
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid #f3e2c4;
+  background-color: #f3e2c4;
+  background-color: rgba(243, 226, 196, 0.1);
+  color: #775418;
+}
+
+.infobox {
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid #868e96;
+  background-color: #868e96;
+  background-color: rgba(134, 142, 150, 0.1);
+  color: #2F4F4F;
+}

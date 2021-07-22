@@ -1,0 +1,157 @@
+---
+title: "Introduction to Tutorials in RS930 and 932"
+output: 
+  learnr::tutorial:
+    css: css/tutorial.css
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+description: >
+  Introduction to Tutorials for RS 930 and 932.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+
+library(readr)
+library(learnr)
+library(fontawesome)
+```
+
+
+## **Welcome to Statistics for Health and Rehabilitation Sciences!**
+<br>
+```{r, echo=FALSE, out.width="100%", fig.align = "center"}
+knitr::include_graphics("images/r_rollercoaster.png")  
+```
+
+
+We will be spending the next two semesters learning statistics and coding in R (and having fun, but that goes without saying, right??). RS 930 and 932 are challenging courses, but I'll do whatever I can to help you develop your statistical knowledge and skills. Developing a solid statistical foundation is absolutely necessary to becoming a successful, independent researcher. Even if you plan on collaborating with a statistician or methodologist for your research, you need a strong background in statistics and research methods to understand how to design studies that can actually answer the research questions you develop, and to be able to communicate those ideas to your collaborators. Understanding how research design and statistics go hand-in-hand will make you a stronger researcher!
+
+Learning a programming language like R while also learning statistics ups the level of difficulty. However, I have designed the courses in a way that (I hope!) will allow you to be successful at both. One tool you will have at your disposal are these R Tutorials. These are self-contained mini-lessons that add to or elaborate on content covered in class. Often, these tutorials will focus on coding in R. Tutorials may contain videos, coding exercises and practice, or just supplemental information for a particular week. You should plan to complete the tutorials **before** the Tuesday class, and after you have done the assigned reading for the week.
+
+If you have any ideas for additional tutorials that would be helpful, please let me know!
+
+## Intro to Tutorials
+
+Each tutorial will include an **Introduction** section that provides the learning objectives, R coding goals, and R packages that are used. Each of these sections is described below.  
+
+Also note that each the tutorials have a Table of Contents on the left side.  You can move around from section to section as you wish.  A black bar will appear to the left of each section of the tutorial when you have completed all tasks in that section (e.g., R exercises).  If you close and reopen the tutorial, youre progress will still be marked.  If you want to start over, click the small "Start Over" button at the bottom of the table of contents.
+
+
+```{r, echo=FALSE, out.width="20%", fig.align = "left"}
+knitr::include_graphics("images/Learning-Objectives.png")  
+```
+At the beginning of each tutorial, you will be presented with the learning objectives and R Goals of that particular tutorial.  
+
+The **objectives** of this tutorial are:
+
+-   Demonstrate the features of tutorials for RS 930 and 932
+
+-   Describe how the tutorials can be used to develop statistical and coding skills
+
+
+***
+
+```{r, echo=FALSE, out.width="10%", fig.align = "left"}
+knitr::include_graphics("images/R-GOALS.png")  
+```
+
+Each tutorial will list the main R-coding objectives for the lesson. Usually these will be new functions or packages that will help you in analyzing data.  By the end of the tutorial, you should be more comfortable knowing when and how to use those particular functions.
+
+`r fa("fab fa-r-project", fill = "purple")` **GOALS**: In this tutorial, you will learn how to:
+
+-   practice coding within an interactive coding exercise in a tutorial
+
+-   use `install.packages` to install a package you need for a particular task
+
+------------------------------------------------------------------------
+
+<br>
+<br>
+
+
+## `r fa("fas fa-laptop-code", fill= "purple")` Coding Help
+
+To help you keep track of functions and their corresponding packages, we will use a package call `::` for each function in coding examples. The exception to this is when using the package `ggplot2`, or when using the pipe operator `%>%` which is loaded as part of the `tidyverse` and `magrittr` packages. If no package is listed for a function, you can assume it is part of Base R.
+
+In the example below, you can see that package call to `dplyr` is included in the code:
+
+```{r example-code, eval=F, echo = T}
+
+exam.data <- exam.data %>%
+  dplyr::select(-Gender)
+
+```
+
+<br>
+
+<br>
+
+**`r fa("fas fa-laptop-code", fill= "purple")`CODING EXAMPLES** occur throughout the tutorials and appear in code chunk gray boxes, similar to how they appear when working in an RMarkdown document (RMD file). Sometimes the output will also appear below the code chunk.
+
+```{r example-code-chunk, echo=T}
+#coding examples will appear in gray boxes; output below
+
+2+2 
+3+2
+sqrt(2+2)
+```
+
+
+<br>
+<br>
+
+**`r fa("fas fa-laptop-code", fill= "purple")` INTERACTIVE CODING EXAMPLES** are included throughout the tutorials. You may be asked to write, modify, or run code for these examples. Hints and solutions are provided. 
+
+Here is an example of interactive coding:
+
+```{r interactive-coding-example, exercise = T}
+
+2+3 #run R as a calculator
+
+practice <- 3 + 2   #save the results to an object
+
+practice  #print the results
+```
+
+
+## `r fa("fas fa-box-open", fill = "purple")` Packages
+
+A list of all the packages that will be used during the tutorial will also be provided in the introduction to each tutorial under the **PACKAGES** Section. These packages will be pre-loaded into the R environment for the Tutorial.  If you are practicing what you are learning in an R Script or .RMD file, you can load these packages in your first code chunk.  You may need to install the package if you do not already have it installed on your system.
+
+
+`r fa("fas fa-box-open", fill = "purple")` **PACKAGES** Several packages have been preloaded for this tutorial:
+
+-   `tidyverse`
+-   `readr`
+-   `psych`
+-   `dplyr`
+-   `car`
+-   `ggplot2`
+ 
+
+And if you need to install a package:
+
+```{r install-packages, eval = F, echo = T}
+
+#If you need to install a package:
+install.packages("car")
+
+#If you need to install multiple packages:
+
+install.packages(c("car", "psych"))
+
+```
+ 
+
+## `r fa("fas fa-video", fill = "purple")` Videos
+
+Some tutorials will include a video lesson that walk you through a particular piece of coding or a statistical analysis.  Videos are hosted on YouTube and you can watch them from within the tutorial or in a separate browser window.  
+
+Here is a sample video on how to set up a Project in R.
+
+
+![](https://youtu.be/jn-5PLEzhys){width="90%"}
+

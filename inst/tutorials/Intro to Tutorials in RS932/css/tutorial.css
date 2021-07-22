@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,600;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+/*-------- Background color & body font --------*/
+body {
+  background-color: white;
+  color: #616161;
+}
+
+/* bold */
+b, strong {
+   color: #800080;
+   }
+
+h2 {
+  color: teal;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  color: teal;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+}
+
+h4 {
+  color: teal;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+}
+
+h5 {
+    color: #A72B2A;
+    background-color: white;
+    display: inline-block;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+
+
+/*------- In line code aesthetic --------*/
+code {
+    color: white;
+    background-color: #00205B;
+    font-size: 14px;
+}
+
+
+/*------- Buttons -------*/
+
+.btn-primary, .btn-success, .btn-info {
+    color: #ffffff;
+    background-color: #2C5577;
+    background-image: none;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn-default {
+    color: #ffffff;
+    background-color: #2C5577;
+    background-image: none;
+    border: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+
+/*------- Solution / Hint buttons -------*/
+.tutorial-exercise-input .btn-tutorial-solution {
+    background-color: #2C5577;
+    color: white;
+    font-family: 'Jaldi', sans-serif;
+    border: 0;
+    text-shadow: none;
+}
+
+
+/*------- Buttons when hovering -------*/
+.btn-default:hover, .btn-success:hover, .btn-info:hover, .btn-primary:hover {
+  background-color: teal;
+  color: white;
+  border: black;
+}
+
+/*------- Solution popover --------*/
+.popover-title {
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 14px;
+    background-color: #E8EAE5;
+    border-bottom: 1px solid #2C5577;
+    border-radius: 5px 5px 0 0;
+    color: #3F3F3F;
+    text-shadow: none;
+    font-family: 'Jaldi', sans-serif;
+}
+
+/* Pedagogic boxes */
+
+div.note, div.tip, div.gotcha, div.design, div.hat, div.obj{
+  border: 4px #b59fd0;
+  border-style: solid;
+  padding: 1em;
+  margin: 1em 0;
+}
+
+ 
