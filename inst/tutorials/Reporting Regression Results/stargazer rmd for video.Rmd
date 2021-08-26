@@ -1,0 +1,95 @@
+---
+title: "stargazer video"
+author: "Annie Fox"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(stargazer)
+library(tidyverse)
+library(haven)
+```
+
+
+```{r load datasets}
+
+data(attitude) 
+
+birth_data <- read_sav("data/birthweight.sav")
+birth_data <- birth_data %>%
+  dplyr::mutate(across(c(moms_race, moms_smoking, hypertension, Uterine_irrit),as_factor))
+```
+
+
+```{r}
+
+model.1 <- lm(rating ~ complaints + privileges + learning + raises, data = attitude)
+summary(model.1)
+
+```
+
+```{r model-1-stargazer, results = "asis", warning = F, message = F}
+
+library(stargazer)
+stargazer(model.1, 
+          type = "html")
+
+```
+
+
+
+```{r stargazer-updated, results = "asis", echo=TRUE, message = F, warning = F}
+stargazer(model.1, 
+          type = "html",
+          title = "Sample Regression Table Using Stargazer Package",
+          intercept.bottom = FALSE,
+          star.cutoffs = c(.05,.01,.001))
+```
+
+
+```{r stargazer-updated-2, results = "asis", echo = TRUE, warning= F}
+
+stargazer(model.1, 
+          type = "html",
+          title = "Sample Regression Table Using Stargazer Package",
+          intercept.bottom = FALSE,
+          star.cutoffs = c(.05,.01,.001),
+          dep.var.caption = "",  #removes the "Dependent Variable" label
+          dep.var.labels = "Rating",  
+          covariate.labels = c("Intercept", "Complaints", "Privileges", "Learning", "Raises"),
+          out = "sampletable.html")
+```
+
+
+```{r birth-data-example}
+
+mr_model1 <- lm(birthwt ~ moms_age + moms_nl_wt, data = birth_data)
+summary(mr_model1)
+
+mr_model2 <- lm(birthwt ~ moms_age + moms_nl_wt + moms_race, data = birth_data)
+
+summary(mr_model2)
+
+```
+
+```{r, results="asis", results ="asis", echo = T, eval= T}
+
+stargazer(mr_model1, mr_model2,
+          title = "Hierchical Multiple Regression Results Predicting Birth Weight",
+          column.labels = c("Model 1", "Model 2"),
+          model.numbers = F,
+          intercept.bottom = FALSE,
+          covariate.labels = c("Intercept", "Mother's Age", "Mother's Pre-Pregnancy Weight", 
+                               "Race: African-American", "Race: Asian/PI"),
+          dep.var.caption = "",
+          dep.var.labels = "Birth Weight (ounces)",
+          type= "html", 
+          ci = TRUE,
+          star.cutoffs = c(0.05, 0.01, 0.001),
+          notes = "95% CI in parentheses",
+          notes.append = TRUE,
+          notes.align = "l")
+          
+```

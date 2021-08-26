@@ -1,0 +1,169 @@
+---
+title: "Power Analyses for Regression"
+output: 
+  learnr::tutorial:
+    css: css/tutorial.css
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+description: >
+  Learn how to conduct power analyses for regression models using GPower.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(fontawesome)
+
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 1. Introduction
+
+```{r, echo=FALSE, out.width="75%", fig.align = "center"}
+knitr::include_graphics("images/power_graphic.png")  
+```
+
+::: {.tip}
+`r fa("fas fa-chalkboard-teacher", fill = "purple")`**LEARNING OBJECTIVES**
+
+The **objectives** of this tutorial are:
+
+-   Learn how to run power analysis for a bivariate correlation
+-   Learn how to run power analyses for regression models
+:::
+
+
+## 2. Video Lesson
+
+There is a video walk-through of power analyses for regression models using G*Power that you can watch before reading and reviewing the material below.
+
+
+![](https://youtu.be/lUZ_Xc--VNw)
+
+
+
+## 3.  Bivariate Correlation
+
+To conduct an apriori power analysis for a bivariate correlation, you'll need to plug in several pieces of information into G\*Power.
+
+-   **Test Family:** Exact
+
+-   **Statistical Test: Correlation:** Bivariate normal model
+
+-   **Type of power analysis:** Apriori
+
+-   **Tails:** two
+
+    -   Unless you have a good reason to use a 1-tailed test, estimate power with a 2-tailed test
+
+-   **Correlation (H1):** expected correlation
+
+    -   What size correlation do you anticipate between your two variables? This is the effect size you'll be powering your analysis for
+
+-   **Alpha:** .05
+
+    -   You can adjust your alpha up or down, depending on how conservative or liberal you'd like to be
+
+-   **Power:** .80
+
+    -   At a minimum, use 80% power. But if possible, powering your sample for 90% is better (and gives you a bit more wiggle room should your anticipated effect size(s) be smaller than anticipated)
+
+-   **Correlation (H0):** correlation to test against
+
+
+
+## 4. Simultaneous Regression Model
+
+A simultaneous regression model is one where all predictors have been entered at the same time (i.e., there is only one step of the model). Often, these models are used when you are interested in the relative effects of predictors (the effect of a variable controlling for other variables in the model), and/or are interested in how much variability all of your predictors account for in the dependent variable.
+
+-   **Test Family:** F tests
+
+-   **Statistical Test:** Linear Multiple Regression: Fixed model, $R^2$ deviation from 0
+
+    -   This analysis will allow you to estimate power based on a set of predictors and how much total variability they account for in the dependent variable
+
+-   **Type of power analysis:** Apriori
+
+-   **Effect size**$f^2$: Expected effect size using cohen's $f^2$.
+
+    -   The formula for $f^2$ is:
+
+$$ f^2 = \frac{d^2}{2k} $$
+
+In this formula, *d* = cohen's d effect size, and *k* = number of predictors. With regression models, you may not have a cohen's d value because you are working with continuous variables.
+
+Luckily, you can convert an $R^2$ to an $f^2$ with the following formula:
+
+$ f^2 = \frac{R^2}{1-R^2} $
+
+-   **Alpha:** .05
+
+    -   You can adjust your alpha up or down, depending on how conservative or liberal you'd like to be
+
+-   **Power:** .80
+
+    -   At a minimum, use 80% power. But if possible, powering your sample for 90% is better (and gives you a bit more wiggle room should your anticipated effect size(s) be smaller than anticipated)
+
+-   **Number of Predictors:** k
+
+    -   At a minimum, use 80% power. But if possible, powering your sample for 90% is better (and gives you a bit more wiggle room should your anticipated effect size(s) be smaller than anticipated)
+
+## 5. Hierarchical Regression Models
+
+In a hierarchical regression model, predictors are entered in steps or stages, and the change in $R^2$ is calculated to determine how much additional variability a predictor or set of predictors accounts for in a dependent variable.
+
+-   **Test Family:** F tests
+
+-   **Statistical Test:** Linear Multiple Regression: Fixed model, $R^2$ increase
+
+    -   This analysis will allow you to estimate power based on how much additional variability a predictor or set of predictors accounts for in the dependent variable
+
+-   **Type of power analysis:** Apriori
+
+-   **Effect size**$f^2$: Expected effect size using cohen's $f^2$.
+
+    -   The formula for converting $R^2$ to $f^2$ is:
+
+$$ f^2 = \frac{R^2}{1-R^2} $$
+
+With a hierarchical model, you may be more interested in the effect of a specific variable or set of variables, and so the conversion to $f^2$ can be adjusted:
+
+$$
+f^2 = \frac{R^2_{AB}-R^2_A}{1-R^2_{AB}}
+$$
+
+In the equation above, $R^2_{AB}$ is the proportion of variability accounted for both both A and B, and $R^2_{A}$ is the variability that can be attributed to A (which can be a variable or set of variables). In other words, you are calculating the total unique variability attributed to a variable or set of variables.
+
+G*Power can perform this calculation for you. Click on the "Determine" button and another screen will pop out.
+
+#### From Variances
+
+-   *Variance explained by the special effect*
+
+    -   For the **variance explained by the special effect,** that should be how much unique variance you expect for a particular predictor or set of predictors. Say we have three predictors total and together, we expect them to account for 42% of the variance. We expect predictor A to account for 10% of the variance in the DV, predictor 2 to account for 12%, and the final predictor to account for 20% of the variance (10 + 12 + 20 = 42). We would run the power analysis three times, changing the number entered for "variance explained by the special effect." We would run it with 10, 12, and 20 entered to see what we get for a sample size (alternatively, you could just do it for the smallest effect, since that is the one you'll want to make sure you are powered for).
+
+-   *Residual Variance:*
+
+    -   Figure out how much total variability you expect to account for in the dependent variable. Then subtract that amount from 100 to get the residual variance amount. Using our previous example, we expect the three predictors to account for 42% of the variance total. We would then enter 58% as the residual variance (100-42).
+
+#### Direct:
+
+-   *Partial $R^2$*
+
+    -   If you already know the partial $R^2$ associated with the predictor or set of predictors, you can enter that instead and then click "calculate" to plug the value back into the main window of G\*Power.
+
+------------------------------------------------------------------------
+
+Returning to the main G*Power Window:
+
+-   **Alpha:** .05
+
+    -   You can adjust your alpha up or down, depending on how conservative or liberal you'd like to be
+
+-   **Power:** .80
+
+    -   At a minimum, use 80% power. But if possible, powering your sample for 90% is better (and gives you a bit more wiggle room should your anticipated effect size(s) be smaller than anticipated)
+
+-   **Number of tested predictors:** This will be the total number of predictors you are including in the step of the model you are examining
+
+-   **Total number of predictors:** This will be the total number of predictors included in the final step of the model
