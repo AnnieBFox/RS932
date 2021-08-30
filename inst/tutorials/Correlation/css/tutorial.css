@@ -1,12 +1,7 @@
-/*-------- Google Fonts --------*/
-
-
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,600;1,100;1,200;1,300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,600;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
 /*-------- Background color & body font --------*/
-
 body {
   background-color: white;
   color: #616161;

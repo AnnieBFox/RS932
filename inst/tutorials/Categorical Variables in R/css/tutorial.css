@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,400;0,600;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
 
 /*-------- Background color & body font --------*/
 body {
@@ -102,11 +101,18 @@ code {
 
 /* Pedagogic boxes */
 
-div.note, div.tip, div.gotcha, div.design, div.hat, div.obj{
-  border: 4px #b59fd0;
-  border-style: solid;
+div.tip {
   padding: 1em;
   margin: 1em 0;
-}
+  padding-left: 100px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  background-image: url("/images/Your-turn.png");
+  min-height: 40px;
+  color: #1f5386;
+  background-color: #bed3ec;
+  border: solid 5px #dfedff;
+  }
 
 
