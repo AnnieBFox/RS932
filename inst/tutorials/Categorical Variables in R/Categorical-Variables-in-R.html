@@ -148,7 +148,8 @@ $(document).ready(function () {
 <h2>Categorical Variables</h2>
 <p>Categorical variables are variables that provide information about the discrete membership of a case in one of a finite number of categories. Categorical variables are qualitative variables because there is no inherent numeric value to any of the categories that make up a particular variable.</p>
 <p>Categorical variables can be further broken down into three different types: nominal, ordinal, and binary.</p>
-<p><img src="images/nominal_ordinal_binary.png" width="75%" style="display: block; margin: auto;" /> <strong>Nominal</strong> variables are categorical variables where there is no relationship between the different levels of the variable.</p>
+<p><img src="images/nominal_ordinal_binary.png" width="75%" style="display: block; margin: auto;" /></p>
+<p><strong>Nominal</strong> variables are categorical variables where there is no relationship between the different levels of the variable.</p>
 <p><strong>Ordinal</strong> variables are categorical variables where there is an increasing or decreasing relationship between levels of the variable. However, the distance between levels is still qualitative. The best example of an ordinal level variable is Place in a race (e.g., 1st, 2nd, 3rd, etc.)</p>
 <p><strong>Binary</strong> variables have only two levels. Binary variables are usually used to denote whether or not a particular outcome or even has happened (1= yes, 0 = no), although there are other possible ways in which a variable may be binary.</p>
 </div>
@@ -245,11 +246,13 @@ summary(dataset1)</code></pre>
 <p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/factors.pdf" class="uri">https://raw.githubusercontent.com/rstudio/cheatsheets/master/factors.pdf</a></p>
 <p>There is also good documentation for the package here: <a href="https://forcats.tidyverse.org/" class="uri">https://forcats.tidyverse.org/</a></p>
 <p>The functions I’ll show you how to use in this tutorial are:</p>
-<pre><code>-   **fct_count**: provides a descriptive table for factors
--   **fct_recode**: changes the coding of values in a factor
--   **fct_lump**: lumps multiple smaller levels into a single other category
--   **fct_collapse**: allows the user to collapse factor levels into defined groups
--   **fct_relevel**: reorder factors by hand</code></pre>
+<ul>
+<li><strong>fct_count</strong>: provides a descriptive table for factors</li>
+<li><strong>fct_recode</strong>: changes the coding of values in a factor</li>
+<li><strong>fct_lump</strong>: lumps multiple smaller levels into a single other category</li>
+<li><strong>fct_collapse</strong>: allows the user to collapse factor levels into defined groups</li>
+<li><strong>fct_relevel</strong>: reorder factors by hand</li>
+</ul>
 <p>To demonstrate how to use functions in the <code>forcats</code> package, we will use the <code>GSSvocab</code> dataset from the <code>carData</code> package. The <code>GSSvocab</code> dataset has 8 variables (5 factors, 3 numeric) and contains data from an observational study, including demographics and scores on a 10-item vocabulary test.</p>
 <p>The dataset has been preloaded for the code and exercises below and the data from the first six cases are shown below:</p>
 <div data-pagedtable="false">
@@ -270,7 +273,8 @@ summary(dataset1)</code></pre>
 {"columns":[{"label":["f"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]},{"label":["p"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1994","2":"1977","3":"0.06848651"},{"1":"1996","2":"1960","3":"0.06789760"},{"1":"2016","2":"1888","3":"0.06540340"},{"1":"1982","2":"1860","3":"0.06443344"},{"1":"1987","2":"1819","3":"0.06301313"},{"1":"2014","2":"1675","3":"0.05802473"},{"1":"1978","2":"1532","3":"0.05307098"},{"1":"1984","2":"1473","3":"0.05102712"},{"1":"2004","2":"1472","3":"0.05099248"},{"1":"2006","2":"1469","3":"0.05088856"},{"1":"2010","2":"1430","3":"0.04953753"},{"1":"2000","2":"1419","3":"0.04915648"},{"1":"1998","2":"1387","3":"0.04804794"},{"1":"2012","2":"1302","3":"0.04510341"},{"1":"2008","2":"1178","3":"0.04080784"},{"1":"1993","2":"1080","3":"0.03741296"},{"1":"1991","2":"1024","3":"0.03547303"},{"1":"1989","2":"1006","3":"0.03484948"},{"1":"1988","2":"988","3":"0.03422593"},{"1":"1990","2":"928","3":"0.03214743"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:teal;overflow:visible;position:relative;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg> Coding Example</strong> Using the code above as an example, use <code>fct_count</code> to examine the variable <code>ageGroup</code> (do not sort or ask for proportional info)</p>
+<p><br></p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:teal;overflow:visible;position:relative;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg> Coding Exercise</strong> Using the code above as an example, use <code>fct_count</code> to examine the variable <code>ageGroup</code> (do not sort or ask for proportional info)</p>
 <div class="tutorial-exercise" data-label="fctcount_exercise" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.checker":"NULL"}</script>
 </div>
@@ -282,7 +286,7 @@ summary(dataset1)</code></pre>
 </div>
 <div id="section-fct_recode" class="section level3">
 <h3><code>fct_recode</code></h3>
-<p>The <code>fct_recode</code> function allows you to rename the levels of a factor.</p>
+<p>The <code>fct_recode</code> function allows you to rename the levels of a factor. This can be helpful for setting up the labels of a categorical variable for use in tables or graphs.</p>
 <p>Here are the levels of the <code>educGroup</code> variable:</p>
 <pre><code>## [1] &quot;&lt;12 yrs&quot;   &quot;12 yrs&quot;    &quot;13-15 yrs&quot; &quot;16 yrs&quot;    &quot;&gt;16 yrs&quot;</code></pre>
 <p>There are 5 levels to the variable relating to the number of years in school, from &lt;12 years to &gt;16 years. Completing 12 years of school usually means you have a high school diploma, while completing more than 16 years means that you have at least attended some graduate school. We can therefore use this information to recode (rename) the levels of the <code>educGroup</code> variable.</p>
@@ -302,6 +306,81 @@ GSSvocab %&gt;%
 {"columns":[{"label":["f"],"name":[1],"type":["fct"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Did not finish HS","2":"5924"},{"1":"HS diploma","2":"8612"},{"1":"Some college","2":"7182"},{"1":"College degree","2":"3914"},{"1":"Graduate school","2":"3154"},{"1":"NA","2":"81"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+</div>
+</div>
+<div id="section-fct_lump" class="section level2">
+<h2><code>fct_lump</code></h2>
+<p>The <code>fct_lump</code> functions allows you to combine levels of categorical variable based on frequency, number of groups desired, or porportion of cases. There are several <code>lump</code> functions you can use:</p>
+<ul>
+<li><p><code>fct_lump_min()</code>: lumps levels that appear fewer than min times.</p></li>
+<li><p><code>fct_lump_prop()</code>: lumps levels that appear in fewer prop * n times</p></li>
+<li><p><code>fct_lump_n()</code> lumps all levels except for the n most frequent (or least frequent if n &lt; 0)</p></li>
+</ul>
+<p><br></p>
+<p><strong><svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:teal;overflow:visible;position:relative;"><path d="M255.03 261.65c6.25 6.25 16.38 6.25 22.63 0l11.31-11.31c6.25-6.25 6.25-16.38 0-22.63L253.25 192l35.71-35.72c6.25-6.25 6.25-16.38 0-22.63l-11.31-11.31c-6.25-6.25-16.38-6.25-22.63 0l-58.34 58.34c-6.25 6.25-6.25 16.38 0 22.63l58.35 58.34zm96.01-11.3l11.31 11.31c6.25 6.25 16.38 6.25 22.63 0l58.34-58.34c6.25-6.25 6.25-16.38 0-22.63l-58.34-58.34c-6.25-6.25-16.38-6.25-22.63 0l-11.31 11.31c-6.25 6.25-6.25 16.38 0 22.63L386.75 192l-35.71 35.72c-6.25 6.25-6.25 16.38 0 22.63zM624 416H381.54c-.74 19.81-14.71 32-32.74 32H288c-18.69 0-33.02-17.47-32.77-32H16c-8.8 0-16 7.2-16 16v16c0 35.2 28.8 64 64 64h512c35.2 0 64-28.8 64-64v-16c0-8.8-7.2-16-16-16zM576 48c0-26.4-21.6-48-48-48H112C85.6 0 64 21.6 64 48v336h512V48zm-64 272H128V64h384v256z"/></svg> Coding Examples</strong></p>
+<p>To demonstrate the <code>fct_lump</code> functions, we can use the <code>year</code> variable from the <code>GSSvocab</code> dataset we have been working with. This variable has 20 levels. Let’s collapse any level that has less than 1200 cases. All of the cases with less than 1200 cases will be re-categorized into an “other” category.</p>
+<div id="section-fct_lump_min" class="section level4">
+<h4><code>fct_lump_min()</code></h4>
+<p>How many levels do we get for the <code>year</code> variable when we collapse all the levels that have less than 1200 cases? How many cases are in the “Other” category?</p>
+<pre class="r"><code>GSSvocab %&gt;%
+  pull(year) %&gt;%
+  forcats::fct_lump_min( min = 1200) %&gt;%
+  table()</code></pre>
+<pre><code>## .
+##  1978  1982  1984  1987  1994  1996  1998  2000  2004  2006  2010  2012  2014 
+##  1532  1860  1473  1819  1977  1960  1387  1419  1472  1469  1430  1302  1675 
+##  2016 Other 
+##  1888  6204</code></pre>
+</div>
+<div id="section-fct_lump_prop" class="section level4">
+<h4><code>fct_lump_prop</code></h4>
+<p>The <code>fct_lump_prop</code> function is similar to the <code>_min</code> function except now it will collapse cases based on a proportion of total cases instead of a minimum value.</p>
+<pre class="r"><code>GSSvocab %&gt;%
+  pull(year) %&gt;%
+  forcats::fct_lump_prop(prop = .05) %&gt;%
+  table()</code></pre>
+<pre><code>## .
+##  1978  1982  1984  1987  1994  1996  2004  2006  2014  2016 Other 
+##  1532  1860  1473  1819  1977  1960  1472  1469  1675  1888 11742</code></pre>
+</div>
+<div id="section-fct_lump_n" class="section level4">
+<h4><code>fct_lump_n()</code></h4>
+<p><code>fct_lump_n()</code> lumps all levels except for the n most frequent (or least frequent if n &lt; 0). Here, we will lump into the 5 most frequent levels, and all other cases will be categorized as “Other”.</p>
+<pre class="r"><code>GSSvocab %&gt;%
+  pull(year) %&gt;%
+  forcats::fct_lump_n(n=5) %&gt;%
+  table()</code></pre>
+<pre><code>## .
+##  1982  1987  1994  1996  2016 Other 
+##  1860  1819  1977  1960  1888 19363</code></pre>
+</div>
+</div>
+<div id="section-converting-factors-back-to-numeric-variables" class="section level2">
+<h2>Converting Factors back to Numeric Variables</h2>
+<p>When you convert variables to factors in R, R assigns numeric values of 1, 2, 3, … n to the levels of the factor, alongside the factor component. That means when you convert it back to a numeric variable, those numeric values will be applied during the conversion to numeric. This is true even if you originally started with a numeric variable that had different numeric codes. Let’s see this in action. We’ll create a numeric variable (0-1) and convert it to a factor. Then we will convert it back to numeric and take a look at the values stored in the variable.</p>
+<p>First, we will create a binomial variable (0/1) and save is as “x”:</p>
+<pre class="r"><code>x = rbinom(n = 10, 
+           size = 1, 
+           prob = .5)
+x</code></pre>
+<pre><code>##  [1] 1 1 0 0 1 1 1 1 1 0</code></pre>
+<p>Then we will factor the variable so that 0 = “no” and 1 = “yes”.</p>
+<pre class="r"><code>x &lt;- factor(x, levels = c(0,1), labels = c(&quot;no&quot;, &quot;yes&quot;))
+x</code></pre>
+<pre><code>##  [1] yes yes no  no  yes yes yes yes yes no 
+## Levels: no yes</code></pre>
+<p>Now, we will convert it back to numeric and see what happens.</p>
+<pre class="r"><code>x &lt;- factor(x, levels = c(0,1), labels = c(&quot;no&quot;, &quot;yes&quot;))
+x &lt;- as.numeric(x)
+x</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
+<p>As you can see, when we convert it back to numeric, the values are 1/2, not 0/1. Sometimes, this may be okay and won’t impact your analyses. However, if you need to get the variable back to the original 0/1 structure, you have a couple of options. One is to reload the original dataset, over-writing any changes you’ve made (this may or may not be a terrible idea). If you loaded your original dataset but have saved all of your changes to a new version of that dataset, you could just copy over the original variable in its 0/1 form into the dataset you have been working with. Alternatively, you could just write a bit of code and rescore the 1/2 back to 0/1. That is what has been done below.</p>
+<pre class="r"><code>x &lt;- factor(x, levels = c(0,1), labels = c(&quot;no&quot;, &quot;yes&quot;))
+x &lt;- as.numeric(x)
+
+x &lt;- ifelse(x==1,0,1)  #if x=1, then it gets changed to 0, if not, it gets coded as 1
+x</code></pre>
+<pre><code>##  [1] NA NA NA NA NA NA NA NA NA NA</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
@@ -318,6 +397,10 @@ Y<-rep(c("cantaloupe","banana", "apple"), 20)
 Z<-rep(c("cantaloupe","banana", "apple"), 20)
 dataset1 <- haven::read_sav("data/sample_dataset.sav")
 data(GSSvocab)
+
+x = rbinom(n = 10, 
+           size = 1, 
+           prob = .5)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
@@ -357,10 +440,9 @@ output$`tutorial-exercise-fctcount_exercise-output` <- renderUI({
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92]}},"value":[{"type":"character","attributes":{},"value":["abind","assertthat","backports","base","broom","bslib","car","carData","cellranger","cli","colorspace","compiler","crayon","curl","data.table","datasets","DBI","dbplyr","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fontawesome","forcats","foreign","fs","gdata","generics","ggplot2","glue","graphics","grDevices","grid","gtable","gtools","haven","highr","hms","htmltools","htmlwidgets","httpuv","httr","jquerylib","jsonlite","knitr","later","learnr","lifecycle","lubridate","magrittr","markdown","methods","mime","modelr","munsell","openxlsx","pillar","pkgconfig","promises","purrr","R6","Rcpp","readr","readxl","reprex","rio","rlang","rmarkdown","rprojroot","rstudioapi","rvest","sass","scales","shiny","stats","stringi","stringr","tibble","tidyr","tidyselect","tidyverse","tools","utils","vctrs","withr","xfun","xml2","xtable","yaml","zip"]},{"type":"character","attributes":{},"value":["1.4-5","0.2.1","1.2.1","4.0.3","0.7.3","0.2.4","3.0-10","3.0-4","1.1.0","2.2.0","2.0-0","4.0.3","1.4.1","4.3","1.13.4","4.0.3","1.1.0","2.0.0","0.6.27","1.0.5","0.3.1","0.14","0.4.1","1.1.0","0.2.1","0.5.0","0.8-80","1.5.0","2.18.0","0.1.0","3.3.3","1.4.2","4.0.3","4.0.3","4.0.3","0.3.0","3.8.2","2.3.1","0.8","0.5.3","0.5.1.1","1.5.3","1.5.5","1.4.2","0.1.3","1.7.2","1.31","1.1.0.1","0.10.1","1.0.0","1.7.9.2","2.0.1","1.1","4.0.3","0.10","0.1.8","0.5.0","4.2.3","1.4.7","2.0.3","1.2.0.1","0.3.4","2.5.0","1.0.6","1.4.0","1.3.1","0.3.0","0.5.16","0.4.10","2.7","2.0.2","0.13","0.3.6","0.3.1","1.1.1","1.6.0","4.0.3","1.5.3","1.4.0","3.0.4","1.1.3","1.1.0","1.3.0","4.0.3","4.0.3","0.3.6","2.4.1","0.22","1.3.2","1.8-4","2.2.1","2.1.1"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92]}},"value":[{"type":"character","attributes":{},"value":["abind","assertthat","backports","base","broom","bslib","car","carData","cellranger","cli","colorspace","compiler","crayon","curl","data.table","datasets","DBI","dbplyr","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fontawesome","forcats","foreign","fs","gdata","generics","ggplot2","glue","graphics","grDevices","grid","gtable","gtools","haven","highr","hms","htmltools","htmlwidgets","httpuv","httr","jquerylib","jsonlite","knitr","later","learnr","lifecycle","lubridate","magrittr","markdown","methods","mime","modelr","munsell","openxlsx","pillar","pkgconfig","promises","purrr","R6","Rcpp","readr","readxl","reprex","rio","rlang","rmarkdown","rprojroot","rstudioapi","rvest","sass","scales","shiny","stats","stringi","stringr","tibble","tidyr","tidyselect","tidyverse","tools","utils","vctrs","withr","xfun","xml2","xtable","yaml","zip"]},{"type":"character","attributes":{},"value":["1.4-5","0.2.1","1.2.1","4.0.3","0.7.8","0.2.4","3.0-10","3.0-4","1.1.0","2.2.0","2.0-0","4.0.3","1.4.1","4.3","1.13.4","4.0.3","1.1.0","2.0.0","0.6.27","1.0.5","0.3.1","0.14","0.4.1","1.1.0","0.2.1","0.5.0","0.8-80","1.5.0","2.18.0","0.1.0","3.3.5","1.4.2","4.0.3","4.0.3","4.0.3","0.3.0","3.8.2","2.3.1","0.8","0.5.3","0.5.1.1","1.5.3","1.5.5","1.4.2","0.1.3","1.7.2","1.31","1.1.0.1","0.10.1","1.0.0","1.7.9.2","2.0.1","1.1","4.0.3","0.10","0.1.8","0.5.0","4.2.3","1.4.7","2.0.3","1.2.0.1","0.3.4","2.5.0","1.0.7","1.4.0","1.3.1","0.3.0","0.5.16","0.4.10","2.7","2.0.2","0.13","0.3.6","0.3.1","1.1.1","1.6.0","4.0.3","1.5.3","1.4.0","3.0.4","1.1.3","1.1.0","1.3.0","4.0.3","4.0.3","0.3.6","2.4.1","0.22","1.3.2","1.8-4","2.2.1","2.1.1"]}]}]}
 </script>
 <!--/html_preserve-->
-</div>
 </div>
 
 </div> <!-- topics -->
