@@ -103,27 +103,24 @@ str(X)
 
 R always assigns integers to levels in alphabetical order. In the example above, A =1, B=2, C=3.
 
-In the example below, `apple` will be assigned 1, `banana` = 2, and cantaloupe = 3.
+In the example below, we'll create a variable called `Y` with three levels: applie, banana, and cantaloupe. When we factor the variable,  `apple` will be assigned 1, `banana` = 2, and cantaloupe = 3.
 
-```{r}
+```{r Y-variable, echo=TRUE}
+Y<-rep(c("cantaloupe","banana", "apple"), 20)  #creating the variable
+str(Y)  #looking at the structure of the variable
+Y <- factor(Y)  # factoring
 str(Y)
 ```
-
-```{r}
-Y <- factor(Y)
-str(Y)
-```
-
 By default, R always sorts levels in alphabetical order. However, you can tell R how you would like the levels ordered. Variable `Z` in the example below is identical to `Y`. But this time, we will add `levels()` to the `factor` call to tell R how to code the levels of the variable. We want "banana" assigned first, then "apple", and then "cantaloupe".
 
-```{r}
+```{r reorder, echo=TRUE}
 Z <- factor(Z, levels = c("banana", "apple", "cantaloupe"))
 str(Z)
 ```
 
 If you want to double-check the factor coding, you can use the `mapLevels` function in the `gdata` package.
 
-```{r}
+```{r mapping-levels, echo=TRUE}
 gdata::mapLevels(X)
 gdata::mapLevels(Y)
 gdata::mapLevels(Z)

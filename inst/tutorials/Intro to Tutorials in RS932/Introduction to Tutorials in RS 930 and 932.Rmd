@@ -2,7 +2,7 @@
 title: "Introduction to Tutorials in RS930 and 932"
 output: 
   learnr::tutorial:
-    css: css/tutorial.css
+    css: css/style_tutorial.css
     progressive: true
     allow_skip: true
 runtime: shiny_prerendered
